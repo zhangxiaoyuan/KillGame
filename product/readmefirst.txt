@@ -1,0 +1,10 @@
+1.首先在client中输入要使用的工具的消息
+2.KillOrder在收到消息指令后会将此消息转换
+3.转换时就通过KillTool类获取到KillAdp动态子类的实例(KillAdpRobert/KillAdpHuman/KillAdpMachine)
+4.在获取KillAdp动态子类的同时就会给对应的子类通过KillTool类中的CreateAdp函数进行kill规则的安装
+5.此时就将每个人的对应规则安装到了InstallKillRule类中的map中(map的key是personID，
+  map的value是规则类KillRule，KillRule类的4个参数：PreKillRule/DoKillRule/CleanKillRule/AnswerKillRule就在这个地方获取到每一个类对应子类的实例)
+6.此时通过KillAdp类的具体子类就可以获取到对应的Language类的子类，此时就将用户输入的消息转化为了对应的RobertLan/HumanLan/MachineLan
+7.此时调用KillOrder.kill()函数就可以通过上面安装的规则和语言去执行kill  
+8.执行kill是通过personID获取到对应的person的KillRule，然后调用KillRule中的四个Pre/Do/Clean/Answer方法，实际上此4个方法的最终调用时通过前面规则
+  注册的KillRule的4个成员变量来执行对应的子类，最终实现action.
