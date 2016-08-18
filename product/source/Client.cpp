@@ -1,6 +1,8 @@
+//#include "vld.h"
 #include "Common.h"
 #include "KillTools.h"
 #include "KillOrder.h"
+
 
 void main()
 {
@@ -14,4 +16,6 @@ void main()
 	order.kill(per1);
 	int per2 = 1;
 	order.kill(per2);
+
+	cout << "...OVER..." << endl;
 }
