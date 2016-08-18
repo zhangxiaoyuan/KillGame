@@ -9,13 +9,12 @@ void main()
 	cout << " .welcome  to kill game. " << endl;
 
 	string msg = "MACHINE|GUN";
+	int personArray[] = {1,2};
 
-	KillOrder order(msg);
+	KillOrder order(msg, personArray);
 
-	int per1 = 2;
-	order.kill(per1);
-	int per2 = 1;
-	order.kill(per2);
+	order.kill(personArray[0]);
+	order.kill(personArray[1]);
 
 	cout << "...OVER..." << endl;
 }
