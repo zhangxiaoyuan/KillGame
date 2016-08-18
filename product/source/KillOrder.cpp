@@ -8,14 +8,13 @@ KillOrder::KillOrder(string msg)
 	int adpTtype = ParseMsg(msg);
 
 	//获取适配指针
-	KillAdp* adp = KillTool::GetInstancePtr(adpTtype)->GetAdpPtr();
+	m_killAdp = KillTool::GetInstancePtr(adpTtype)->GetAdpPtr();
 
 	/*将暗杀指令转换为对应的机器或者人的语言*/
-	Language* lan = adp->GetLanguage();
-	string name = lan->GetLanName();
+	m_language = m_killAdp->GetLanguage();
+	string name = m_language->GetLanName();
 
-	cout << "language name = " << name << endl;
-
+	cout << "who: " << name << endl;
 } 
 
 KillOrder::~KillOrder()
