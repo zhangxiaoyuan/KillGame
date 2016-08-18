@@ -3,8 +3,7 @@
 
 RobertLan::RobertLan()
 {
-	cout << "this is robert language" << endl;
-	m_name = "robert language";
+	m_name = "robert ready to kill";
 };
 
 string RobertLan::GetLanName()
@@ -14,8 +13,7 @@ string RobertLan::GetLanName()
 
 HumanLan::HumanLan()
 {
-	cout << "this is human language" << endl;
-	m_name = "human language";
+	m_name = "human ready to kill";
 };
 
 string HumanLan::GetLanName()
@@ -25,8 +23,7 @@ string HumanLan::GetLanName()
 
 MachineLan::MachineLan()
 {
-	cout << "this is machine language" << endl;
-	m_name = "machine language";
+	m_name = "machine ready to kill";
 }
 string MachineLan::GetLanName()
 {
@@ -36,7 +33,7 @@ string MachineLan::GetLanName()
 
 killAdpRobert::killAdpRobert()
 {
-	cout << "this is adapter to robert" << endl;
+	cout << "adapter to robert" << endl;
 }
 
 killAdpRobert::~killAdpRobert()
@@ -53,7 +50,7 @@ Language* killAdpRobert::GetLanguage()
 
 KillAdpHuman::KillAdpHuman()
 {
-	cout << "this is adapter to human" << endl;
+	cout << "adapter to human" << endl;
 }
 
 KillAdpHuman::~KillAdpHuman()
@@ -70,7 +67,7 @@ Language* KillAdpHuman::GetLanguage()
 
 KillAdpMachine::KillAdpMachine()
 {
-	cout << "this is adapter to machine" << endl;
+	cout << "adapter to machine" << endl;
 }
 
 KillAdpMachine::~KillAdpMachine()
