@@ -37,7 +37,7 @@ KillTool* KillTool::GetInstancePtr(int adp)
 	return m_pInstance;
 }
 
-
+/*根据编译工程的不同，采用同名函数就可以将adp区分开*/
 void KillTool::CreateAdp(int adpType)
 {
 	if (ROBERT_TYPE == adpType)
@@ -112,7 +112,7 @@ void KillTool::InstallMachineRule()
 	int per1 = 1;
 	WHOINTALLEDKILLRULE(per1)	
 		.SetAnswerRule((AnswerKillRule*)new RopeAnswerRule())
-		.SetCleanRule((CleanKillRule*)new KnifeCleanRule())
+		.SetCleanRule((CleanKillRule*)new RopeCleanRule())
 		.SetDoRule((DoKillRule*)new GunDoRule())
-		.SetPreRule((PreKillRule*)new GunPreRule());
+		.SetPreRule((PreKillRule*)new KnifePreRule());
 }
