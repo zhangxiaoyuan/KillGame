@@ -3,11 +3,11 @@
 
 KillTool* KillTool::m_pInstance = NULL;
 
-KillTool::KillTool(int adp)
+KillTool::KillTool(int adp, int personArr[])
 {
 	cout << "KillTool ready" << endl;
 	cout << "create adapter type : " << adp << endl;
-	CreateAdp(adp);
+	CreateAdp(adp, personArr);
 }
 
 KillTool::~KillTool()
@@ -16,44 +16,44 @@ KillTool::~KillTool()
 }
 
 
-KillTool& KillTool::GetInstance(int adp)
+KillTool& KillTool::GetInstance(int adp, int personArr[])
 {
 	if (m_pInstance == NULL)
 	{
-		m_pInstance = new KillTool(adp);
+		m_pInstance = new KillTool(adp, personArr);
 	}
 
 	return *m_pInstance;
 }
 
 
-KillTool* KillTool::GetInstancePtr(int adp)
+KillTool* KillTool::GetInstancePtr(int adp, int personArr[])
 {
 	if (m_pInstance == NULL)
 	{
-		m_pInstance = new KillTool(adp);
+		m_pInstance = new KillTool(adp, personArr);
 	}
 
 	return m_pInstance;
 }
 
 /*根据编译工程的不同，采用同名函数就可以将adp区分开*/
-void KillTool::CreateAdp(int adpType)
+void KillTool::CreateAdp(int adpType, int personArr[])
 {
 	if (ROBERT_TYPE == adpType)
 	{
 		m_AdpType = (KillAdp*)new killAdpRobert();
-		InstallRobertRule();
+		InstallRobertRule(personArr);
 	}
 	else if (HUMAN_TYPE == adpType)
 	{
 		m_AdpType = (KillAdp*)new KillAdpHuman();
-		InstallHumanRule();
+		InstallHumanRule(personArr);
 	}
 	else if (MACHINE_TYPE == adpType)
 	{
 		m_AdpType = (KillAdp*)new KillAdpMachine();
-		InstallMachineRule();
+		InstallMachineRule(personArr);
 	}
 	else
 	{
@@ -74,43 +74,58 @@ KillRule& SetDoRule(DoKillRule* doRule);
 KillRule& SetCleanRule(CleanKillRule* clean);
 KillRule& SetAnswerRule(AnswerKillRule* answe);
 */
-void KillTool::InstallRobertRule()
+void KillTool::InstallRobertRule(int personArr[])
 {
-	int per1 = 1;
-	int per2 = 2;
-	WHOINTALLEDKILLRULE(per1)	
+	if (personArr == NULL)
+	{
+		return ;
+	}
+	int perCnt = sizeof(personArr) / sizeof(personArr[0]);
+
+
+	WHOINTALLEDKILLRULE(personArr[0])	
 		.SetAnswerRule((AnswerKillRule*)new RopeAnswerRule())
 		.SetCleanRule((CleanKillRule*)new KnifeCleanRule())
 		.SetDoRule((DoKillRule*)new GunDoRule())
 		.SetPreRule((PreKillRule*)new GunPreRule());
 
-	WHOINTALLEDKILLRULE(per2)
+	WHOINTALLEDKILLRULE(personArr[1])
 		.SetAnswerRule((AnswerKillRule*)new RopeAnswerRule())
 		.SetCleanRule((CleanKillRule*)new KnifeCleanRule())
 		.SetDoRule((DoKillRule*)new KnifeDoRule())
 		.SetPreRule((PreKillRule*)new RopePreRule());
 }
 
-void KillTool::InstallHumanRule()
+void KillTool::InstallHumanRule(int personArr[])
 {
-	int per1 = 1;
-	WHOINTALLEDKILLRULE(per1)	
+	if (personArr == NULL)
+	{
+		return ;
+	}
+	int perCnt = sizeof(personArr) / sizeof(personArr[0]);
+
+	WHOINTALLEDKILLRULE(personArr[1])	
 		.SetAnswerRule((AnswerKillRule*)new RopeAnswerRule())
 		.SetCleanRule((CleanKillRule*)new KnifeCleanRule())
 		.SetDoRule((DoKillRule*)new GunDoRule())
 		.SetPreRule((PreKillRule*)new GunPreRule());
 }
 
-void KillTool::InstallMachineRule()
+void KillTool::InstallMachineRule(int personArr[])
 {
-	int per2 = 2;
-	WHOINTALLEDKILLRULE(per2)	
+	if (personArr == NULL)
+	{
+		return ;
+	}
+	int perCnt = sizeof(personArr) / sizeof(personArr[0]);
+
+	WHOINTALLEDKILLRULE(personArr[0])	
 		.SetAnswerRule((AnswerKillRule*)new RopeAnswerRule())
 		.SetCleanRule((CleanKillRule*)new KnifeCleanRule())
 		.SetDoRule((DoKillRule*)new GunDoRule())
 		.SetPreRule((PreKillRule*)new GunPreRule());
 	int per1 = 1;
-	WHOINTALLEDKILLRULE(per1)	
+	WHOINTALLEDKILLRULE(personArr[1])	
 		.SetAnswerRule((AnswerKillRule*)new RopeAnswerRule())
 		.SetCleanRule((CleanKillRule*)new RopeCleanRule())
 		.SetDoRule((DoKillRule*)new GunDoRule())
