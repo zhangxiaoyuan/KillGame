@@ -1,10 +1,14 @@
 #ifndef __KILL_ORDER_H
 #define __KILL_ORDER_H
 
-//#include "KillRules.h"
+//#include "KillRules.h#include "KillLanguage.h"
+//#include "KillAdp.h"
 #include "Common.h"
 #include <string>
 
+
+class KillAdp;
+class Language;
 class KillRule;
 class KillOrder
 {
@@ -33,6 +37,8 @@ public:
 
 private:
 	KillRule* m_killRule;
+	KillAdp*  m_killAdp;
+	Language* m_language;
 };
 
 #endif
