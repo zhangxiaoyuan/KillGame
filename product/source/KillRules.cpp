@@ -60,3 +60,4 @@ KillRule& KillRule::SetAnswerRule(AnswerKillRule* answer)
 	m_answerRule = answer;
 	return *this;
 }
+
