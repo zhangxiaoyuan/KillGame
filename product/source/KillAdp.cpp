@@ -3,7 +3,7 @@
 
 RobertLan::RobertLan()
 {
-	m_name = "robert ready to kill";
+	m_name = "robert";
 };
 
 string RobertLan::GetLanName()
@@ -13,7 +13,7 @@ string RobertLan::GetLanName()
 
 HumanLan::HumanLan()
 {
-	m_name = "human ready to kill";
+	m_name = "human";
 };
 
 string HumanLan::GetLanName()
@@ -23,7 +23,7 @@ string HumanLan::GetLanName()
 
 MachineLan::MachineLan()
 {
-	m_name = "machine ready to kill";
+	m_name = "machine";
 }
 string MachineLan::GetLanName()
 {
