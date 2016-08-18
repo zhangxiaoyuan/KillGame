@@ -70,3 +70,4 @@ KillRule* InstallKillRule::GetSomeoneRules(int personID)
 }
 
 
+
